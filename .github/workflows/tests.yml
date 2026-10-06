@@ -1,0 +1,31 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Unit tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install test dependency
+        run: python -m pip install "redis>=5,<9"
+      - name: Run synthetic unit suite
+        run: python -m unittest discover -s tests -v
+      - name: Compile Python sources
+        run: >-
+          python -m compileall -q ptah_orchestrator.py ptah_status.py ptah_review.py
+          ptah_alert_window.py ptah_demo_alert.py analyzer sensors shared tests

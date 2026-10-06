@@ -1,0 +1,8 @@
+redis>=5.0,<9
+psutil>=6.0,<8
+scapy>=2.6,<3
+numpy>=2.0,<3
+pandas>=2.2,<4
+scikit-learn>=1.5,<2
+networkx>=3.3,<4
+torch>=2.5,<3

@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+PROJECT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+PYTHON="$PROJECT_DIR/venv/bin/python"
+
+if [ ! -x "$PYTHON" ]; then
+    printf '%s\n' "PTAH environment not found. Follow the installation steps in README.md first." >&2
+    exit 1
+fi
+
+exec "$PYTHON" "$PROJECT_DIR/ptah_orchestrator.py" "$@"
