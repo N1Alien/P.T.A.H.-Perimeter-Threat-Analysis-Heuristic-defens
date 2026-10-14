@@ -8,6 +8,12 @@ PTAH observes local process resource use and IP packet metadata, joins packets t
 
 This is a learning prototype, not a production endpoint-security product. Model scores and rules are investigation leads, not proof of malicious activity.
 
+## Animated overview
+
+![PTAH anti-rogue AI tool: local sensors, analysis, alert, and human review](docs/assets/ptah-demo.gif)
+
+*Illustrative animation using synthetic data; it does not show a live detection.*
+
 The default orchestrator starts the PyTorch autoencoder. `analyzer/ml_engine.py` is a separate Isolation Forest experiment and is not started by the orchestrator.
 
 ## Requirements
